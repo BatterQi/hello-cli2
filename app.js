@@ -1,6 +1,11 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.json({ ok: true }));
-app.listen(port, () => console.log(`Listening on ${port}`));
+
+app.get("/", (req, res) => res.json({ ok: true }));
+
+if (require.main === module) {
+  // 只有直接运行 app.js 时才监听端口
+  app.listen(3000, () => console.log("Listening on 3000"));
+}
+
 module.exports = app;
